@@ -1,0 +1,51 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Steamboat Divides data profile</title>
+  <meta name="description" content="a data-based community profile for the Steamboat Divides project">
+  <meta name="author" content="Daniel Lathrop">
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="https://daniel.buzz/css/normalize.css">
+  <link rel="stylesheet" href="https://daniel.buzz/css/skeleton.css">
+  <link rel="stylesheet" href="https://daniel.buzz/css/custom.css">
+
+
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script> 
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<h5>Steamboat Divides Data Profile</h5>
+    		<h2><strong><span class="geographyName">Steamboat Springs city</span></strong></h2> 
+		</div>
+		<div id="populationBreakdown" class="row"></div>
+		<div id="racialComparison" class="row"></div>
+		<div id="ethnicComparison" class="row"></div>
+		<div id="economicComparison" class="row"></div>
+
+		<div id="otherCensus" class="row">
+			<div is="otherCensusData">
+		</div>
+	</div> <!-- close div.row and div.container -->
+	<script src="js/main.js"></script>
+    <script>
+		var geoID='0700000US081079349673825';
+		main(geoID)
+	</script>
+</body>`
+</html>
