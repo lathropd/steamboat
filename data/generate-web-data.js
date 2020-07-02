@@ -4,7 +4,10 @@ const axios = require('axios')
 const d3 = require('d3')
 
 
-var fields = ['NAME',
+var fields = [
+  'NAME',
+  'STATE',
+  'COUNTY',
   'B01001_001E',  // total population
   'B01001_002E',  // male population
   'B01001_026E',  // female population
@@ -25,9 +28,9 @@ var fields = ['NAME',
   'B01001D_002E', // asian male population
   'B01001D_017E', // asian female population
 
-  'B01001E_001E', // native hawaiian / pacific islander population
-  'B01001E_002E', // native hawaiian / pacific islander male
-  'B01001E_017E', // native hawaiian / pacific islander female
+  //'B01001E_001E', // native hawaiian / pacific islander population
+  //'B01001E_002E', // native hawaiian / pacific islander male
+  //'B01001E_017E', // native hawaiian / pacific islander female
 
   'B01001F_001E', // other race total
   'B01001F_002E', // other race male
@@ -50,17 +53,17 @@ var fields = ['NAME',
   'B01002B_001E', // median age black
   'B01002C_001E', // median age native american
   'B01002D_001E', // median age asian
-  'B01002E_001E', // median age native hawaiian and pacific islander
+  //'B01002E_001E', // median age native hawaiian and pacific islander
   'B01002F_001E', // median age other race
   'B01002G_001E', // median age two or more races
-  'B01002H_002E', // median age non-hispanic white
+  'B01002H_001E', // median age non-hispanic white
   'B01002I_001E', // median age hispanic
 
   'B02008_001E',  // white alone or in combination population
   'B02009_001E',  // black alone or in combination population
   'B02010_001E',  // native american  alone or in combination population
   'B02011_001E',  // asian alone or in combination
-  'B02012_001E',  // hawaiian/pacific islander alone or in combination population
+  //'B02012_001E',  // hawaiian/pacific islander alone or in combination population
   'B02013_001E',  // other race alone or in combination population
   'B02018_008E',  // asian alone or in combination: filipino population
 
@@ -73,7 +76,7 @@ var fields = ['NAME',
   'B03002_014E', // black alone hispanic
   'B03002_015E', // native american alone hispanic
   'B03002_016E', // asian hispanic alone hispanic
-  'B03002_017E', // pacific islander alone hispanic
+ // 'B03002_017E', // pacific islander alone hispanic
   'B03002_018E', // other race hispanic
   'B03002_019E', // two or more races hispanic
 
@@ -108,14 +111,14 @@ var fields = ['NAME',
   'B06002_001E', // median age
   'B06002_002E', // median age born in state of residence
   'B06002_003E', // median age born in another state
-  'B06002_004E', // median age citizen born outside us
   'B06002_005E', // median age foreign born
+
 
   'B06004A_002E', // born in state of residence (white)
   'B06004B_002E', // born in state of residence (black)
   'B06004C_002E', // born in state of residence (native american)
   'B06004D_002E', // born in state of residence (asian)
-  'B06004E_002E', // born in state of residence (pacific islander)
+  //'B06004E_002E', // born in state of residence (pacific islander)
   'B06004F_002E', // born in state of residence (other race)
   'B06004G_002E', // born in state of residence (two or more races)
   'B06004H_002E', // born in state of residence (white nonhispanic)
@@ -137,11 +140,11 @@ var fields = ['NAME',
 
 
   'B06011_001E', // median income
-  'B06011_002E', // ... born in state of residenc
+  'B06011_002E', // ... born in state of residencec
   'B06011_003E', // ... born in another state
-  'B06011_004E', // ... native born outside us
   'B06011_005E', // ... foreign born
 
+  'B06012_001E', // population
   'B06012_002E', // below poverty line
   'B06012_003E', // 100 to 149% poverrty line
   'B06012_003E', // 150%+ the poverty line
@@ -165,35 +168,72 @@ var fields = ['NAME',
 
 
 ]
+console.log(fields.length)
 var apiKey = '11f5493d2c1abfda99d1cda59e4d9c68a232adde'
 
 
 async function main() {
-  let i = 0
-  while (fields.length > 0) {
-    i += 1
-    let fieldString = fields.slice(0,49).join(',')
+  let j = Math.ceil(fields.length/49,0)
+  let datasets = []
+  for (let i = 0; i  < j; i++) {
+    let fieldsString = fields.slice(i*49,(i+1)*49).join(',')
     let geoIds = fs.readFileSync('./routt-and-moffat-geographies-querystring.txt', 'utf8')
-    fields = fields.slice(49)
-    let get = https.get(`https://api.census.gov/data/2018/acs/acs5?get=NAME,${fieldString}&key=${apiKey}&ucgid=${geoIds}`, (resp) => {
-     let data = '';
-    // A chunk of data has been recieved.
-     resp.on('data', (chunk) => {
-       data += chunk;
-     });
-
-     // The whole response has been received. Print out the result.
-     resp.on('end', () => {
-       let rows = JSON.parse(data)
-       fs.writeFileSync(`webdata${i}.csv`,d3.csvFormatRows(rows), {encoding:
-       'utf8'})
-       console.error('file '+i+' downloaded')
-     });
-
-    }).on("error", (err) => {
-      console.error("Error: " + err.message);
-    })
+    console.log(fieldsString)
+    try {
+      const resp = await axios.get('https://api.census.gov/data/2018/acs/acs5',
+        { params: {
+          get: fieldsString,
+          key: apiKey,
+          ucgid: geoIds.trim()
+        }
+      })
+      console.log(resp.path)
+      //console.log(resp)
+      let rows = resp.data
+      if(typeof(rows)=='string') {
+        console.log(resp.status)
+        console.log(resp.headers)
+      } else {
+        datasets.push(rows)
+    }
+    } catch (error) {
+      console.log(error)
+    }
   }
+  let rows = datasets.shift()
+  for (dataset of datasets) {
+    for (i in dataset) {
+      console.log(i)
+      let oldRow = rows[i]
+      oldRow.pop() // remove the trailing ucgid of the old row
+      let newRow = dataset[i]
+      rows[i] = oldRow.concat(newRow)
+    }
+  }
+
+  let keys = rows[0].slice()
+    for (k in keys) {
+      console.log(k, '.')
+      let denominatorKey = keys[k].split('_')[0] + '_001E'
+      console.log(denominatorKey)
+      let denominatorIndex = keys.indexOf(denominatorKey)
+      let valueKey = keys[k].slice(0, keys[k].length - 1) + 'P'
+      if (denominatorIndex > -1) {
+        rows[0].push(valueKey)
+        for  (i=1; i<rows.length; i++) {
+          let row = rows[i].slice()
+          let value = Math.round(row[k]/row[denominatorIndex] * 1000)/10 + '%'
+          rows[i].push(value)
+          process.stdout.write(':')
+
+        }
+      }
+    }
+
+
+  fs.writeFileSync(`webdata.csv`,d3.csvFormatRows(rows), {encoding:
+    'utf8'})
+  console.error('data downloaded')
 }
 
 main()
