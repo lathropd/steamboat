@@ -1,0 +1,15 @@
+{
+  "name": "steamboat-data-project",
+  "version": "0.0.1",
+  "description": "Census and other data reader/displayer for Steamboat Divides project",
+  "main": " ",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Daniel Lathrop",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "d3": "^5.16.0"
+  }
+}

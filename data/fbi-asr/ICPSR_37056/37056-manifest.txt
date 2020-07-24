@@ -1,0 +1,53 @@
+File Manifest for ICPSR 37056
+
+United States. Federal Bureau of Investigation. Uniform Crime Reporting
+Program Data: Arrests by Age, Sex, and Race, United States, 2016.
+ICPSR37056-v1. Ann Arbor, MI: Inter-university Consortium for Political and
+Social Research [distributor], 2018-06-28.
+http://doi.org/10.3886/ICPSR37056.v1
+
+
+Study-level Documentation
+
+    Filename                            Record  Record    Var.    Date        MD5
+                                        Length  Count     Count   Updated     Checksum
+
+    37056-descriptioncitation.pdf       -       -         -       2018-06-28  -
+
+    37056-related_literature.txt        -       -         -       daily       -
+
+    37056-manifest.txt                  -       -         -       daily       -
+
+
+DS0001 Uniform Crime Reporting Program Data: Arrests by Age, Sex, and Race,
+United States, 2016
+
+    Filename                            Record  Record    Var.    Date        MD5
+                                        Length  Count     Count   Updated     Checksum
+
+    37056-0001-Codebook.pdf             -       -         -       2018-06-28  a7ce7dfc67bfb197a9eea31f2fe4fbe3
+
+    37056-0001-Data.dta                 -       1,437,138 89      2018-06-28  6041fb3dcade6cde01b21af35372a50c
+
+    37056-0001-Data.rda                 -       1,437,138 89      2018-06-28  5e4e7b1a30f83d6ac0a4b957d864023e
+
+    37056-0001-Data.sav                 -       1,437,138 89      2018-06-28  d4b97843ac398f0d24d9406f144c003b
+
+    37056-0001-Data.stc                 -       1,437,138 89      2018-06-28  94ee4c8f313431e14654337437e0b073
+
+    37056-0001-Data.tsv                 -       1,437,138 89      2018-06-28  e8d16af3303d55da10eb7a3b313be891
+
+    37056-0001-Data.txt                 414     1,437,138 89      2018-06-28  b9871d0d39865456aab430b60c21255d
+
+    37056-0001-Setup.dct                -       -         -       2018-06-28  c68b52bcb528c380477db8efd3b945f5
+
+    37056-0001-Setup.do                 -       -         -       2018-06-28  56d0b19b266f4c2f087aba84569a05ac
+
+    37056-0001-Setup.sas                -       -         -       2018-06-28  e2a5768252cf30ce295dfe5c9dbba379
+
+    37056-0001-Setup.sps                -       -         -       2018-06-28  0c1622f2bd8c738cc9ad1ed7d7ee8b24
+
+    37056-0001-Supplemental_syntax.do   -       -         -       2018-06-28  b3bafc7118117a6b2e40bfeee25871a8
+
+    37056-0001-Supplemental_syntax.sas  -       -         -       2018-06-28  da00ce09b8b15450771f75fcd94c1523
+

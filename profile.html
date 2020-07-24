@@ -31,9 +31,23 @@
 	<div class="container">
 		<div class="row">
 			<h5>Steamboat Divides Data Profile</h5>
-    		<h2><strong><span class="geographyName">Steamboat Springs city</span></strong></h2> 
+    		<h2>
+                <strong><span class="geographyName"></span></strong>
+            </h2> 
 		</div>
-		<div id="populationBreakdown" class="row"></div>
+		<div id="populationBreakdown" class="row">
+            <table id="results">
+                <thead>
+                <tr>
+                    <th>Data Table</th>
+                    <th>Value</th>
+                    <th>Variable</th>
+                    <th>Field Name</th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
 		<div id="racialComparison" class="row"></div>
 		<div id="ethnicComparison" class="row"></div>
 		<div id="economicComparison" class="row"></div>
@@ -42,9 +56,9 @@
 			<div is="otherCensusData">
 		</div>
 	</div> <!-- close div.row and div.container -->
-	<script src="js/main.js"></script>
+	<script src="js/profile.js"></script>
     <script>
-		var geoID='0700000US081079349673825';
+		var geoID= new URL(document.URL).searchParams.get("geoid") || '0700000US081079349673825';
 		main(geoID)
 	</script>
 </body>`

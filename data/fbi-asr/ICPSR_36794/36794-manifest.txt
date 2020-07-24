@@ -1,0 +1,53 @@
+File Manifest for ICPSR 36794
+
+United States. Federal Bureau of Investigation. Uniform Crime Reporting
+Program Data: Arrests by Age, Sex, and Race, United States, 2015.
+ICPSR36794-v1. Ann Arbor, MI: Inter-university Consortium for Political and
+Social Research [distributor], 2017-05-19.
+http://doi.org/10.3886/ICPSR36794.v1
+
+
+Study-level Documentation
+
+    Filename                            Record  Record    Var.    Date        MD5
+                                        Length  Count     Count   Updated     Checksum
+
+    36794-descriptioncitation.pdf       -       -         -       2018-05-23  -
+
+    36794-related_literature.txt        -       -         -       daily       -
+
+    36794-manifest.txt                  -       -         -       daily       -
+
+
+DS0001 Uniform Crime Reporting Program Data: Arrests by Age, Sex, and Race,
+United States, 2015
+
+    Filename                            Record  Record    Var.    Date        MD5
+                                        Length  Count     Count   Updated     Checksum
+
+    36794-0001-Codebook.pdf             -       -         -       2017-05-19  8e416b07e871db637be71902cde08ebd
+
+    36794-0001-Data.dta                 -       1,417,971 89      2017-05-19  f826cbffd17b58a84a1e7282a47daa77
+
+    36794-0001-Data.rda                 -       1,417,971 89      2017-05-19  73aa19907781b7a13b609c421f0b900f
+
+    36794-0001-Data.sav                 -       1,417,971 89      2017-05-19  af705b787abf550f885c41124af5aa61
+
+    36794-0001-Data.stc                 -       1,417,971 89      2017-05-19  0da41ce17331024323d6183f885ee696
+
+    36794-0001-Data.tsv                 -       1,417,971 89      2017-05-19  395fa444aacbf2da8f3652ad0ed6048b
+
+    36794-0001-Data.txt                 414     1,417,971 89      2017-05-19  acfdf9e4c6ebe2b407c4b4cc668ab8ba
+
+    36794-0001-Setup.dct                -       -         -       2017-05-19  0018324548e68b336ff8ff9cbf5b29c6
+
+    36794-0001-Setup.do                 -       -         -       2017-05-19  a43d22ba74725d8446ec291901baa10e
+
+    36794-0001-Setup.sas                -       -         -       2017-05-19  ea08744de2ca62e96c84a0e13a63fe11
+
+    36794-0001-Setup.sps                -       -         -       2017-05-19  90d7ce56191b859b26fa56127c670668
+
+    36794-0001-Supplemental_syntax.do   -       -         -       2017-05-19  34b4eddf2c4db0e1b5833af4c61a0340
+
+    36794-0001-Supplemental_syntax.sas  -       -         -       2017-05-19  040035d20322e2c012b08004f8b3fa68
+

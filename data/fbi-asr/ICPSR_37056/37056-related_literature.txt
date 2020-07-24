@@ -1,0 +1,60 @@
+Bibliography
+Uniform Crime Reporting Program Data: Arrests by Age, Sex, and Race, United
+States, 2016
+
+This bibliography includes published and unpublished works that are related 
+to ICPSR study 37056. It includes works that are based on primary
+or secondary analysis of the data, or which describe or critique those
+data or the collection methodology. 
+
+If you publish a work or know of other works that are based on these data,
+please send the complete citation and name of the ICPSR study used to:
+icpsr-biblio-notify@umich.edu 
+
+
+1. Boustead, Anne E., "Privacy Protections and Law Enforcement Use of
+Prescription Drug Monitoring Databases." 2019?..
+Full text PDF: https://osf.io/ha6wv/download/%3Fformat%3Dpdf&hl=en&sa=X&d=4341214037732040757&scisig=AAGBfm1n1aRlYG-5i19y38UHS0YgbjPz9g&nossl=1&oi=scholaralrt&hist=5d-myMAAAAAJ:4326401825452164476:AAGBfm28_AjB2ee-eWKBeIDwjpKPE92_Dw
+
+2. Ellis, Cameron M.; Grace, Martin F.; Smith, Rhet; Zhang, Juan,
+"Marijuana De-Regulation and Automobile Accidents: Evidence from Auto
+Insurance." Working Paper, Mar 2, 2019..
+Full text PDF: https://osf.io/ha6wv/download/%3Fformat%3Dpdf&hl=en&sa=X&d=4341214037732040757&scisig=AAGBfm1n1aRlYG-5i19y38UHS0YgbjPz9g&nossl=1&oi=scholaralrt&hist=5d-myMAAAAAJ:4326401825452164476:AAGBfm28_AjB2ee-eWKBeIDwjpKPE92_Dw
+
+3. Neusteter, S.R.; Subramanian, Ram; Trone, Jennifer; Khogali, Mawia;
+Reed, Cindy, "Gatekeepers: The Role of Police in Ending Mass
+Incarceration." New York, NY: Vera Institute of Justice, Aug 2019.
+Abstract: https://www.vera.org/publications/gatekeepers-police-and-mass-incarceration
+Full text PDF: https://storage.googleapis.com/vera-web-assets/downloads/Publications/gatekeepers-police-and-mass-incarceration/legacy_downloads/gatekeepers-police-and-mass-incarceration.pdf
+
+4. Plunk, Andrew D.; Peglow, Stephanie L.; Harrell, Paul T.; Grucza,
+Richard A., "Youth and adult arrests for cannabis possession after
+decriminalization and legalization of cannabis." JAMA Pediatrics. in press
+2019,. DOI: 10.1001/jamapediatrics.2019.1539
+Abstract: https://www.vera.org/publications/gatekeepers-police-and-mass-incarceration
+Full text PDF: https://storage.googleapis.com/vera-web-assets/downloads/Publications/gatekeepers-police-and-mass-incarceration/legacy_downloads/gatekeepers-police-and-mass-incarceration.pdf
+
+5. Puzzanchera, Charles, "Arrests of Juveniles in 2018 Reached the Lowest
+Level in Nearly 4 Decades." Factsheet. Washington, DC: Office of Juvenile
+Justice and Delinquency Prevention, Dec 2019..
+Abstract: https://www.ncjrs.gov/App/Publications/abstract.aspx?ID=277732
+Full text PDF: https://www.ojjdp.gov/ojstatbb/snapshots/DataSnapshot_UCR2018.pdf
+
+6. Stringer, Richard J.; Maggard, Scott R., "From 'just say no' to 'I
+didn't inhale' to we have 'bigger fish to fry': The president, the media,
+and attitudes toward marijuana legalization." Deviant Behavior. in press
+2019,. DOI: 10.1080/01639625.2019.1653483
+Abstract: https://www.ncjrs.gov/App/Publications/abstract.aspx?ID=277732
+Full text PDF: https://www.ojjdp.gov/ojstatbb/snapshots/DataSnapshot_UCR2018.pdf
+
+7. Tregle, Brandon; Nix, Justin; Alpert, Geoffrey P., "Disparity does not
+mean bias: making sense of observed racial disparities in fatal officer-
+involved shootings with multiple benchmarks." Journal of Crime and Justice.
+in press 2019,. DOI: 10.1080/0735648X.2018.1547269
+Abstract: https://www.ncjrs.gov/App/Publications/abstract.aspx?ID=277732
+Full text PDF: https://www.ojjdp.gov/ojstatbb/snapshots/DataSnapshot_UCR2018.pdf
+
+8. Young, Timothy, "Essays in Labor and Experimental Economics with a Focus
+on Crime and Discrimination." University of California, 2019.
+Abstract: https://www.ncjrs.gov/App/Publications/abstract.aspx?ID=277732
+Full text PDF: https://www.ojjdp.gov/ojstatbb/snapshots/DataSnapshot_UCR2018.pdf
