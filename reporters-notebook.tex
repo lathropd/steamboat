@@ -1,0 +1,973 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{hyperref}
+\hypersetup{
+            pdftitle={Indivisible research},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+
+\title{Indivisible research}
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+\maketitle
+
+Analysis and paragraphs for \emph{Indivisble} at the Steamboat Pilot.
+
+\hypertarget{setup}{%
+\subparagraph{setup}\label{setup}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# install.packages(c("tidyverse", " tidycensus", " tigris", "sf", "censusapi", "gmodels"))}
+\KeywordTok{library}\NormalTok{(}\StringTok{"tidyverse"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## -- Attaching packages ------------------------------------------------------------------------------- tidyverse 1.3.0 --
+\end{verbatim}
+
+\begin{verbatim}
+## v ggplot2 3.3.2     v purrr   0.3.4
+## v tibble  3.0.3     v dplyr   1.0.0
+## v tidyr   1.1.0     v stringr 1.4.0
+## v readr   1.3.1     v forcats 0.5.0
+\end{verbatim}
+
+\begin{verbatim}
+## -- Conflicts ---------------------------------------------------------------------------------- tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(}\StringTok{"tidycensus"}\NormalTok{)}
+\KeywordTok{library}\NormalTok{(}\StringTok{"tigris"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## To enable 
+## caching of data, set `options(tigris_use_cache = TRUE)` in your R script or .Rprofile.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(}\StringTok{"sf"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Linking to GEOS 3.8.1, GDAL 3.1.2, PROJ 7.1.0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(}\StringTok{"censusapi"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'censusapi'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:methods':
+## 
+##     getFunction
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(}\StringTok{"gmodels"}\NormalTok{)}
+
+\KeywordTok{census_api_key}\NormalTok{(}\StringTok{'11f5493d2c1abfda99d1cda59e4d9c68a232adde'}\NormalTok{, }\DataTypeTok{overwrite=}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{install=}\OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Your original .Renviron will be backed up and stored in your R HOME directory if needed.
+\end{verbatim}
+
+\begin{verbatim}
+## Your API key has been stored in your .Renviron and can be accessed by Sys.getenv("CENSUS_API_KEY"). 
+## To use now, restart R or run `readRenviron("~/.Renviron")`
+\end{verbatim}
+
+\begin{verbatim}
+## [1] "11f5493d2c1abfda99d1cda59e4d9c68a232adde"
+\end{verbatim}
+
+\hypertarget{section}{%
+\section{2020-07-21}\label{section}}
+
+Basic stats
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vars_acs <-}\StringTok{ }\KeywordTok{load_variables}\NormalTok{(}\DecValTok{2018}\NormalTok{, }\StringTok{"acs5"}\NormalTok{, }\DataTypeTok{cache =} \OtherTok{TRUE}\NormalTok{)}
+\NormalTok{vars_acs}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 26,996 x 3
+##    name       label                           concept                           
+##    <chr>      <chr>                           <chr>                             
+##  1 B00001_001 Estimate!!Total                 UNWEIGHTED SAMPLE COUNT OF THE PO~
+##  2 B00002_001 Estimate!!Total                 UNWEIGHTED SAMPLE HOUSING UNITS   
+##  3 B01001_001 Estimate!!Total                 SEX BY AGE                        
+##  4 B01001_002 Estimate!!Total!!Male           SEX BY AGE                        
+##  5 B01001_003 Estimate!!Total!!Male!!Under 5~ SEX BY AGE                        
+##  6 B01001_004 Estimate!!Total!!Male!!5 to 9 ~ SEX BY AGE                        
+##  7 B01001_005 Estimate!!Total!!Male!!10 to 1~ SEX BY AGE                        
+##  8 B01001_006 Estimate!!Total!!Male!!15 to 1~ SEX BY AGE                        
+##  9 B01001_007 Estimate!!Total!!Male!!18 and ~ SEX BY AGE                        
+## 10 B01001_008 Estimate!!Total!!Male!!20 years SEX BY AGE                        
+## # ... with 26,986 more rows
+\end{verbatim}
+
+Routt County has about 25,000 residents{[}ACS 2018{]}, and they are far
+from homogenous.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# from the data I already generated or other research}
+
+\NormalTok{population <-}\StringTok{ }\DecValTok{24874}
+\NormalTok{white_population_alone <-}\StringTok{ }\DecValTok{23601}
+\NormalTok{white_non_hispanic_pop <-}\StringTok{ }\DecValTok{22270}
+\NormalTok{latino_pop <-}\StringTok{ }\DecValTok{1740}
+\NormalTok{white_latino_pop <-}\StringTok{ }\DecValTok{1331}
+\NormalTok{black_pop <-}\StringTok{ }\DecValTok{254}
+\NormalTok{born_in_colorado <-}\StringTok{ }\DecValTok{8841}
+\NormalTok{children <-}\StringTok{ }\DecValTok{4532}
+\NormalTok{children_under_poverty_line <-}\StringTok{ }\DecValTok{427}
+\NormalTok{children_under_twice_the_poverty_line <-}\StringTok{ }\DecValTok{427} \OperatorTok{+}\StringTok{ }\DecValTok{545}
+\end{Highlighting}
+\end{Shaded}
+
+Routt County has about 25,000 full-time residents according to the U.S.
+Census. - 90 percent are white, non-Latino {[}ACS 2018{]} - 7 percent
+are Latino - the rest are a mix of Black, Asian, Native American and
+those who describe thenselves as multiracial or member of some other
+race. {[}ACS 2018{]} - the median age is 39.8 - but for Latinos (30) and
+Native Americans (31) it is substatially lower - 30 percent are members
+of two dozens churches and other relgious congregation {[}ARDA 2010{]} -
+half of those are Roman Catholic - the rest are mostly a mix of mainline
+and evangelical Christians - About 20 percent are considered poor - 11
+percent are direly impoverished, living under the federal poverty line -
+about 35 percent are from Colorado - 51 percent live in Steamboat
+Springs - they are only somewhatt more likely to be from outside
+Colorado, to be poor, more likely to be an immigrant and to be poor than
+those living outsid
+
+\hypertarget{black-in-routt-countysteamboat}{%
+\subsubsection{black in Routt
+County/Steamboat}\label{black-in-routt-countysteamboat}}
+
+Few members of Steamboat Springs's small Black community grew up locally
+with only about 5\% are native Coloradoans. The others choose to move to
+a community in which they make up less than 2\% of the population.
+
+About 75\% (77.8\%) of Blacks in Routt County live in Steamboat, but not
+all.
+
+For example, in the town of Oak Creek about 3\% (2.6\%) of the town's
+800 (832) residents are Black.
+
+\hypertarget{economocs}{%
+\subsubsection{economocs}\label{economocs}}
+
+The median income in Steamboat Springs is \$33,000. That's statistically
+similar to the county as a whole (\$36,0000) and the rest of Northwest
+Colorador (\$35,000).
+
+In Steamboat and Routt County those from other parts of the U.S. had
+earnings more than 25\% higher than natives.
+
+Import data to analyze local vs out of town home owners
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Routt County zipcodes via Zillow https://www.zillow.com/browse/homes/co/routt-county/}
+\NormalTok{routt_zips <-}\KeywordTok{c}\NormalTok{(    }\StringTok{"80428"}\NormalTok{,}
+    \StringTok{"80467"}\NormalTok{,}
+    \StringTok{"80469"}\NormalTok{,}
+    \StringTok{"81639"}\NormalTok{,}
+    \StringTok{"81638"}\NormalTok{,}
+    \StringTok{"80477"}\NormalTok{,}
+    \StringTok{"80479"}\NormalTok{,}
+    \StringTok{"80483"}\NormalTok{,}
+    \StringTok{"80488"}\NormalTok{,}
+    \StringTok{"81653"}\NormalTok{,}
+    \StringTok{"80487"}\NormalTok{)}
+
+\CommentTok{# the residential property uses with potential owner-occupants (i.e. not apartments)}
+\NormalTok{residential_property_uses <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}
+  \StringTok{"Live/Work Unit"}\NormalTok{,}
+  \StringTok{"Res. SF w/Caretaker"}\NormalTok{,}
+  \StringTok{"Residential Condominium"}\NormalTok{,}
+  \CommentTok{# "Residential Duplex", # take out the multifamily}
+  \CommentTok{# "Residential Duplex Triplex", # take out the multifamil}
+  \StringTok{"Residential SF w/AG"}\NormalTok{,}
+  \StringTok{"Residential Single Family"}\NormalTok{,}
+  \StringTok{"Residential Townhome"}
+\NormalTok{)}
+
+\NormalTok{routt_parcels <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"~/Desktop/projects/steamboat/data/ASSESSOR_Parcels.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Parsed with column specification:
+## cols(
+##   .default = col_character(),
+##   FID = col_double(),
+##   PIN = col_double(),
+##   parcelSequence = col_double(),
+##   Township = col_double(),
+##   Range = col_double(),
+##   sqFt = col_double(),
+##   totalAcres = col_double(),
+##   subCode = col_double(),
+##   totalImpsAssessed = col_double(),
+##   totalImpsValue = col_double(),
+##   totalLandAssessed = col_double(),
+##   totalLandValue = col_double(),
+##   salePrice = col_double(),
+##   BldgCount = col_double(),
+##   locAddress = col_double(),
+##   OWNERSHIP = col_double(),
+##   SHAPE_Length = col_double(),
+##   SHAPE_Area = col_double()
+## )
+\end{verbatim}
+
+\begin{verbatim}
+## See spec(...) for full column specifications.
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: 179 parsing failures.
+##  row      col               expected actual                                                     file
+## 7218 Township no trailing characters      S '~/Desktop/projects/steamboat/data/ASSESSOR_Parcels.csv'
+## 7219 Township no trailing characters      S '~/Desktop/projects/steamboat/data/ASSESSOR_Parcels.csv'
+## 7219 Range    no trailing characters      W '~/Desktop/projects/steamboat/data/ASSESSOR_Parcels.csv'
+## 7220 Township no trailing characters      S '~/Desktop/projects/steamboat/data/ASSESSOR_Parcels.csv'
+## 7221 Township no trailing characters      S '~/Desktop/projects/steamboat/data/ASSESSOR_Parcels.csv'
+## .... ........ ...................... ...... ........................................................
+## See problems(...) for more details.
+\end{verbatim}
+
+Code values for owner in or out of Routt County
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{routt_parcels <-}\StringTok{ }\NormalTok{routt_parcels }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{local_owner =} \KeywordTok{substr}\NormalTok{(ownZip,}\DecValTok{1}\NormalTok{,}\DecValTok{5}\NormalTok{) }\OperatorTok{%in%}\StringTok{ }\NormalTok{routt_zips,}
+                                          \DataTypeTok{residential =}\NormalTok{ propUse }\OperatorTok{%in%}\StringTok{ }\NormalTok{residential_property_uses)}
+  
+\KeywordTok{attach}\NormalTok{(routt_parcels)}
+\NormalTok{ownership_table <-}\StringTok{ }\KeywordTok{table}\NormalTok{(local_owner, residential)}
+\KeywordTok{detach}\NormalTok{(routt_parcels)}
+\KeywordTok{summary}\NormalTok{(ownership_table)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Number of cases in table: 25123 
+## Number of factors: 2 
+## Test for independence of all factors:
+##  Chisq = 340.5, df = 1, p-value = 5.025e-76
+\end{verbatim}
+
+\hypertarget{compare-values}{%
+\subsubsection{Compare values}\label{compare-values}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{residences_only <-}\StringTok{ }\NormalTok{routt_parcels }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(residential }\OperatorTok{==}\StringTok{ }\OtherTok{TRUE}\NormalTok{)}
+\NormalTok{residences_only }\OperatorTok{%>%}\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{n=}\KeywordTok{n}\NormalTok{())}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 1
+##       n
+##   <int>
+## 1 14369
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{residences_only }\OperatorTok{%>%}\StringTok{ }\KeywordTok{group_by}\NormalTok{( propUse, local_owner) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{meanVal=} \KeywordTok{mean}\NormalTok{(totalImpsValue }\OperatorTok{+}\StringTok{ }\NormalTok{totalLandValue) ) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{unnest}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }\KeywordTok{spread}\NormalTok{(local_owner, meanVal) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{ }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{pct_dif =}\NormalTok{ (}\StringTok{`}\DataTypeTok{FALSE}\StringTok{`}\OperatorTok{/}\StringTok{ `}\DataTypeTok{TRUE}\StringTok{`} \DecValTok{-1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `summarise()` regrouping output by 'propUse' (override with `.groups` argument)
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: `cols` is now required when using unnest().
+## Please use `cols = c()`
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 6 x 4
+## # Groups:   propUse [6]
+##   propUse                    `FALSE`   `TRUE` pct_dif
+##   <chr>                        <dbl>    <dbl>   <dbl>
+## 1 Live/Work Unit                 NA  1557055   NA    
+## 2 Res. SF w/Caretaker       1529160. 1099954.   0.390
+## 3 Residential Condominium    472489.  374158.   0.263
+## 4 Residential SF w/AG        870653.  620868.   0.402
+## 5 Residential Single Family 1084661.  674876.   0.607
+## 6 Residential Townhome       755398.  489114.   0.544
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{residences_only }\OperatorTok{%>%}\StringTok{ }\KeywordTok{group_by}\NormalTok{( propUse, local_owner) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{n=}\KeywordTok{n}\NormalTok{() ) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{unnest}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }\KeywordTok{spread}\NormalTok{(local_owner, n) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{ }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{pct_dif =}\NormalTok{ (}\StringTok{`}\DataTypeTok{FALSE}\StringTok{`}\OperatorTok{/}\StringTok{ `}\DataTypeTok{TRUE}\StringTok{`} \DecValTok{-1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `summarise()` regrouping output by 'propUse' (override with `.groups` argument)
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: `cols` is now required when using unnest().
+## Please use `cols = c()`
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 6 x 4
+## # Groups:   propUse [6]
+##   propUse                   `FALSE` `TRUE` pct_dif
+##   <chr>                       <int>  <int>   <dbl>
+## 1 Live/Work Unit                 NA      2 NA     
+## 2 Res. SF w/Caretaker            38     90 -0.578 
+## 3 Residential Condominium      3036   1403  1.16  
+## 4 Residential SF w/AG           558    921 -0.394 
+## 5 Residential Single Family    1589   4684 -0.661 
+## 6 Residential Townhome          993   1055 -0.0588
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{residences_only }\OperatorTok{%>%}\StringTok{ }\KeywordTok{group_by}\NormalTok{( propUse, local_owner) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{median=} \KeywordTok{median}\NormalTok{(totalImpsValue }\OperatorTok{+}\StringTok{ }\NormalTok{totalLandValue) ) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{unnest}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }\KeywordTok{spread}\NormalTok{(local_owner, median) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{ }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{pct_dif =}\NormalTok{ (}\StringTok{`}\DataTypeTok{FALSE}\StringTok{`}\OperatorTok{/}\StringTok{ `}\DataTypeTok{TRUE}\StringTok{`} \DecValTok{-1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `summarise()` regrouping output by 'propUse' (override with `.groups` argument)
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: `cols` is now required when using unnest().
+## Please use `cols = c()`
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 6 x 4
+## # Groups:   propUse [6]
+##   propUse                   `FALSE`  `TRUE` pct_dif
+##   <chr>                       <dbl>   <dbl>   <dbl>
+## 1 Live/Work Unit                 NA 1557055  NA    
+## 2 Res. SF w/Caretaker       1295080  943630   0.372
+## 3 Residential Condominium    369980  287130   0.289
+## 4 Residential SF w/AG        468980  386910   0.212
+## 5 Residential Single Family  808800  566940   0.427
+## 6 Residential Townhome       675130  445140   0.517
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{residences_only }\OperatorTok{%>%}\StringTok{ }\KeywordTok{group_by}\NormalTok{( local_owner) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{n =} \KeywordTok{n}\NormalTok{() ) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{unnest}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }\KeywordTok{spread}\NormalTok{(local_owner, n) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{total =} \StringTok{`}\DataTypeTok{TRUE}\StringTok{`} \OperatorTok{+}\StringTok{ `}\DataTypeTok{FALSE}\StringTok{`}\NormalTok{, }\DataTypeTok{pct_false =} \StringTok{`}\DataTypeTok{FALSE}\StringTok{`}\OperatorTok{/}\NormalTok{total)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `summarise()` ungrouping output (override with `.groups` argument)
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: `cols` is now required when using unnest().
+## Please use `cols = c()`
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 1 x 4
+##   `FALSE` `TRUE` total pct_false
+##     <int>  <int> <int>     <dbl>
+## 1    6214   8155 14369     0.432
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{residences_only }\OperatorTok{%>%}\StringTok{ }\KeywordTok{group_by}\NormalTok{(propUse, local_owner) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{n =} \KeywordTok{n}\NormalTok{() ) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{unnest}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }\KeywordTok{spread}\NormalTok{(local_owner, n) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{total =} \StringTok{`}\DataTypeTok{TRUE}\StringTok{`} \OperatorTok{+}\StringTok{ `}\DataTypeTok{FALSE}\StringTok{`}\NormalTok{, }\DataTypeTok{pct_false =} \StringTok{`}\DataTypeTok{FALSE}\StringTok{`}\OperatorTok{/}\NormalTok{total)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `summarise()` regrouping output by 'propUse' (override with `.groups` argument)
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: `cols` is now required when using unnest().
+## Please use `cols = c()`
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 6 x 5
+## # Groups:   propUse [6]
+##   propUse                   `FALSE` `TRUE` total pct_false
+##   <chr>                       <int>  <int> <int>     <dbl>
+## 1 Live/Work Unit                 NA      2    NA    NA    
+## 2 Res. SF w/Caretaker            38     90   128     0.297
+## 3 Residential Condominium      3036   1403  4439     0.684
+## 4 Residential SF w/AG           558    921  1479     0.377
+## 5 Residential Single Family    1589   4684  6273     0.253
+## 6 Residential Townhome          993   1055  2048     0.485
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{residences_only}\OperatorTok{$}\NormalTok{ownZip }\OperatorTok{%>%}\StringTok{ }\KeywordTok{substr}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{5}\NormalTok{) }\OperatorTok{%in%}\StringTok{ }\NormalTok{routt_zips }\OperatorTok{%>%}\StringTok{ }\KeywordTok{head}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  TRUE  TRUE FALSE  TRUE FALSE FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{residences_only }\OperatorTok{%>%}\StringTok{ }\KeywordTok{select}\NormalTok{(ownZip, local_owner) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{head}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 10 x 2
+##    ownZip     local_owner
+##    <chr>      <lgl>      
+##  1 80477-2472 TRUE       
+##  2 80477      TRUE       
+##  3 80128      FALSE      
+##  4 80477-4323 TRUE       
+##  5 92103      FALSE      
+##  6 98115      FALSE      
+##  7 80477-0737 TRUE       
+##  8 80487      TRUE       
+##  9 80428-0810 TRUE       
+## 10 80428-0866 TRUE
+\end{verbatim}
+
+\hypertarget{describe-economics}{%
+\subsubsection{2020-07-22 Describe economics}\label{describe-economics}}
+
+Routt County's biggest economic divide is between full-time residents
+and second home owners. Those part-timers own more than 40 percent of
+the 14,000 single family residences. They also own nearly 70 percent of
+the condominiums, normally the most affordable way for people to afford
+to buy a home. {[}counts houses, townhomes and condos{]}
+
+That demand dramatically drives up prices with non-locals paying from 20
+to 50 percent more, depending on the type of housing, according to an
+analysis of data from from the Routt County Property Appraiser.
+
+GET A QUOTE HERE
+
+Still, among the full-time residents there are certainly haves and have
+nots.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{income <-}\StringTok{ }\KeywordTok{get_acs}\NormalTok{(}\DataTypeTok{geography =} \StringTok{"county"}\NormalTok{, }\DataTypeTok{table=}\StringTok{"B19001"}\NormalTok{, }\DataTypeTok{cache_table =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{state=}\StringTok{"CO"}\NormalTok{, }\DataTypeTok{county=}\StringTok{"Routt"}\NormalTok{, }\DataTypeTok{keep_geo_vars =}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{year=}\DecValTok{2018}\NormalTok{, }\DataTypeTok{survey=}\StringTok{"acs5"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Getting data from the 2014-2018 5-year ACS
+\end{verbatim}
+
+\begin{verbatim}
+## Loading ACS5 variables for 2018 from table B19001 and caching the dataset for faster future access.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{income <-}\StringTok{ }\KeywordTok{get_acs}\NormalTok{(}\DataTypeTok{geography =} \StringTok{"county"}\NormalTok{, }\DataTypeTok{table=}\StringTok{"B19001A"}\NormalTok{, }\DataTypeTok{cache_table =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{state=}\StringTok{"CO"}\NormalTok{, }\DataTypeTok{county=}\StringTok{"Routt"}\NormalTok{, }\DataTypeTok{keep_geo_vars =}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{year=}\DecValTok{2018}\NormalTok{, }\DataTypeTok{survey=}\StringTok{"acs5"}\NormalTok{)  }\OperatorTok{%>%}\StringTok{  }\KeywordTok{rows_insert}\NormalTok{(income, }\DataTypeTok{by=}\StringTok{"variable"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Getting data from the 2014-2018 5-year ACS
+\end{verbatim}
+
+\begin{verbatim}
+## Loading ACS5 variables for 2018 from table B19001A and caching the dataset for faster future access.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{income <-}\StringTok{ }\KeywordTok{get_acs}\NormalTok{(}\DataTypeTok{geography =} \StringTok{"county"}\NormalTok{, }\DataTypeTok{table=}\StringTok{"B19001B"}\NormalTok{, }\DataTypeTok{cache_table =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{state=}\StringTok{"CO"}\NormalTok{, }\DataTypeTok{county=}\StringTok{"Routt"}\NormalTok{, }\DataTypeTok{keep_geo_vars =}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{year=}\DecValTok{2018}\NormalTok{, }\DataTypeTok{survey=}\StringTok{"acs5"}\NormalTok{)  }\OperatorTok{%>%}\StringTok{  }\KeywordTok{rows_insert}\NormalTok{(income, }\DataTypeTok{by=}\StringTok{"variable"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Getting data from the 2014-2018 5-year ACS
+\end{verbatim}
+
+\begin{verbatim}
+## Loading ACS5 variables for 2018 from table B19001B and caching the dataset for faster future access.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{income <-}\StringTok{ }\KeywordTok{get_acs}\NormalTok{(}\DataTypeTok{geography =} \StringTok{"county"}\NormalTok{, }\DataTypeTok{table=}\StringTok{"B19001C"}\NormalTok{, }\DataTypeTok{cache_table =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{state=}\StringTok{"CO"}\NormalTok{, }\DataTypeTok{county=}\StringTok{"Routt"}\NormalTok{, }\DataTypeTok{keep_geo_vars =}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{year=}\DecValTok{2018}\NormalTok{, }\DataTypeTok{survey=}\StringTok{"acs5"}\NormalTok{)  }\OperatorTok{%>%}\StringTok{  }\KeywordTok{rows_insert}\NormalTok{(income, }\DataTypeTok{by=}\StringTok{"variable"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Getting data from the 2014-2018 5-year ACS
+\end{verbatim}
+
+\begin{verbatim}
+## Loading ACS5 variables for 2018 from table B19001C and caching the dataset for faster future access.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{income <-}\StringTok{ }\KeywordTok{get_acs}\NormalTok{(}\DataTypeTok{geography =} \StringTok{"county"}\NormalTok{, }\DataTypeTok{table=}\StringTok{"B19001D"}\NormalTok{, }\DataTypeTok{cache_table =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{state=}\StringTok{"CO"}\NormalTok{, }\DataTypeTok{county=}\StringTok{"Routt"}\NormalTok{, }\DataTypeTok{keep_geo_vars =}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{year=}\DecValTok{2018}\NormalTok{, }\DataTypeTok{survey=}\StringTok{"acs5"}\NormalTok{)  }\OperatorTok{%>%}\StringTok{  }\KeywordTok{rows_insert}\NormalTok{(income, }\DataTypeTok{by=}\StringTok{"variable"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Getting data from the 2014-2018 5-year ACS
+\end{verbatim}
+
+\begin{verbatim}
+## Loading ACS5 variables for 2018 from table B19001D and caching the dataset for faster future access.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{income <-}\StringTok{ }\KeywordTok{get_acs}\NormalTok{(}\DataTypeTok{geography =} \StringTok{"county"}\NormalTok{, }\DataTypeTok{table=}\StringTok{"B19001E"}\NormalTok{, }\DataTypeTok{cache_table =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{state=}\StringTok{"CO"}\NormalTok{, }\DataTypeTok{county=}\StringTok{"Routt"}\NormalTok{, }\DataTypeTok{keep_geo_vars =}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{year=}\DecValTok{2018}\NormalTok{, }\DataTypeTok{survey=}\StringTok{"acs5"}\NormalTok{)  }\OperatorTok{%>%}\StringTok{  }\KeywordTok{rows_insert}\NormalTok{(income, }\DataTypeTok{by=}\StringTok{"variable"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Getting data from the 2014-2018 5-year ACS
+\end{verbatim}
+
+\begin{verbatim}
+## Loading ACS5 variables for 2018 from table B19001E and caching the dataset for faster future access.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{income <-}\StringTok{ }\KeywordTok{get_acs}\NormalTok{(}\DataTypeTok{geography =} \StringTok{"county"}\NormalTok{, }\DataTypeTok{table=}\StringTok{"B19001F"}\NormalTok{, }\DataTypeTok{cache_table =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{state=}\StringTok{"CO"}\NormalTok{, }\DataTypeTok{county=}\StringTok{"Routt"}\NormalTok{, }\DataTypeTok{keep_geo_vars =}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{year=}\DecValTok{2018}\NormalTok{, }\DataTypeTok{survey=}\StringTok{"acs5"}\NormalTok{)  }\OperatorTok{%>%}\StringTok{  }\KeywordTok{rows_insert}\NormalTok{(income, }\DataTypeTok{by=}\StringTok{"variable"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Getting data from the 2014-2018 5-year ACS
+\end{verbatim}
+
+\begin{verbatim}
+## Loading ACS5 variables for 2018 from table B19001F and caching the dataset for faster future access.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{income <-}\StringTok{ }\KeywordTok{get_acs}\NormalTok{(}\DataTypeTok{geography =} \StringTok{"county"}\NormalTok{, }\DataTypeTok{table=}\StringTok{"B19001G"}\NormalTok{, }\DataTypeTok{cache_table =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{state=}\StringTok{"CO"}\NormalTok{, }\DataTypeTok{county=}\StringTok{"Routt"}\NormalTok{, }\DataTypeTok{keep_geo_vars =}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{year=}\DecValTok{2018}\NormalTok{, }\DataTypeTok{survey=}\StringTok{"acs5"}\NormalTok{)  }\OperatorTok{%>%}\StringTok{  }\KeywordTok{rows_insert}\NormalTok{(income, }\DataTypeTok{by=}\StringTok{"variable"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Getting data from the 2014-2018 5-year ACS
+\end{verbatim}
+
+\begin{verbatim}
+## Loading ACS5 variables for 2018 from table B19001G and caching the dataset for faster future access.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{income <-}\StringTok{ }\KeywordTok{get_acs}\NormalTok{(}\DataTypeTok{geography =} \StringTok{"county"}\NormalTok{, }\DataTypeTok{table=}\StringTok{"B19001H"}\NormalTok{, }\DataTypeTok{cache_table =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{state=}\StringTok{"CO"}\NormalTok{, }\DataTypeTok{county=}\StringTok{"Routt"}\NormalTok{, }\DataTypeTok{keep_geo_vars =}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{year=}\DecValTok{2018}\NormalTok{, }\DataTypeTok{survey=}\StringTok{"acs5"}\NormalTok{)  }\OperatorTok{%>%}\StringTok{  }\KeywordTok{rows_insert}\NormalTok{(income, }\DataTypeTok{by=}\StringTok{"variable"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Getting data from the 2014-2018 5-year ACS
+\end{verbatim}
+
+\begin{verbatim}
+## Loading ACS5 variables for 2018 from table B19001H and caching the dataset for faster future access.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{income <-}\StringTok{ }\KeywordTok{get_acs}\NormalTok{(}\DataTypeTok{geography =} \StringTok{"county"}\NormalTok{, }\DataTypeTok{table=}\StringTok{"B19001I"}\NormalTok{, }\DataTypeTok{cache_table =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{state=}\StringTok{"CO"}\NormalTok{, }\DataTypeTok{county=}\StringTok{"Routt"}\NormalTok{, }\DataTypeTok{keep_geo_vars =}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{year=}\DecValTok{2018}\NormalTok{, }\DataTypeTok{survey=}\StringTok{"acs5"}\NormalTok{)  }\OperatorTok{%>%}\StringTok{  }\KeywordTok{rows_insert}\NormalTok{(income, }\DataTypeTok{by=}\StringTok{"variable"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Getting data from the 2014-2018 5-year ACS
+\end{verbatim}
+
+\begin{verbatim}
+## Loading ACS5 variables for 2018 from table B19001I and caching the dataset for faster future access.
+\end{verbatim}
+
+create the additional vairables needed for reshaping
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{income2 <-}\StringTok{ }\NormalTok{income }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{short_var =} \KeywordTok{str_sub}\NormalTok{(variable,}\OperatorTok{-}\DecValTok{3}\NormalTok{,}\OperatorTok{-}\DecValTok{1}\NormalTok{)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{          }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{table =} \KeywordTok{str_sub}\NormalTok{(variable, }\DecValTok{1}\NormalTok{, }\DecValTok{-5}\NormalTok{))  }\OperatorTok{%>%}
+\StringTok{          }\KeywordTok{select}\NormalTok{(}\DataTypeTok{name=}\NormalTok{NAME, short_var, estimate, table) }\OperatorTok{%>%}
+\StringTok{          }\KeywordTok{spread}\NormalTok{(short_var, estimate, }\DataTypeTok{sep=}\StringTok{"_"}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{          }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{lt_20k =}\NormalTok{ short_var_}\DecValTok{002} \OperatorTok{+}\StringTok{ }\NormalTok{short_var_}\DecValTok{003} \OperatorTok{+}\StringTok{ }\NormalTok{short_var_}\DecValTok{004}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{          }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{gt_150k =}\NormalTok{ short_var_}\DecValTok{016} \OperatorTok{+}\StringTok{ }\NormalTok{short_var_}\DecValTok{017}\NormalTok{) }
+
+
+\NormalTok{pct <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x) \{x}\OperatorTok{/}\NormalTok{income2}\OperatorTok{$}\NormalTok{short_var_}\DecValTok{001}\NormalTok{\}}
+\NormalTok{income3  <-}\StringTok{ }\NormalTok{income2 }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate_if}\NormalTok{(is.numeric, }\KeywordTok{c}\NormalTok{(}\DataTypeTok{pct =}\NormalTok{ pct)) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{race_code=}\KeywordTok{str_sub}\NormalTok{(table,}\DecValTok{7}\NormalTok{,}\DecValTok{8}\NormalTok{))}
+\KeywordTok{rm}\NormalTok{(pct)}
+\end{Highlighting}
+\end{Shaded}
+
+Build labels by race
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{race_codes =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{""}\NormalTok{, }\StringTok{"A"}\NormalTok{,}\StringTok{"B"}\NormalTok{,}\StringTok{"C"}\NormalTok{,}\StringTok{"D"}\NormalTok{,}\StringTok{"E"}\NormalTok{,}\StringTok{"F"}\NormalTok{,}\StringTok{"G"}\NormalTok{,}\StringTok{"H"}\NormalTok{,}\StringTok{"I"}\NormalTok{)}
+\NormalTok{race_values =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"All"}\NormalTok{, }\StringTok{"White"}\NormalTok{, }\StringTok{"Black"}\NormalTok{, }\StringTok{"Native American"}\NormalTok{, }\StringTok{"Asian"}\NormalTok{, }\StringTok{"Pacific Islander"}\NormalTok{, }\StringTok{"Other"}\NormalTok{, }\StringTok{"Two or more"}\NormalTok{, }\StringTok{"White non-hispanic"}\NormalTok{, }\StringTok{"Hispanic"}\NormalTok{)}
+
+\NormalTok{race <-}\StringTok{ }\KeywordTok{tibble}\NormalTok{(}\DataTypeTok{race_code=}\NormalTok{race_codes, }\DataTypeTok{race=}\NormalTok{race_values)}
+
+\NormalTok{income4 <-}\StringTok{ }\NormalTok{income3 }\OperatorTok{%>%}\StringTok{ }\KeywordTok{inner_join}\NormalTok{(race) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Joining, by = "race_code"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{median_income <-}\StringTok{ }\KeywordTok{get_acs}\NormalTok{(}\DataTypeTok{geography =} \StringTok{"county"}\NormalTok{, }\DataTypeTok{table=}\StringTok{"B19013"}\NormalTok{, }\DataTypeTok{cache_table =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{state=}\StringTok{"CO"}\NormalTok{, }\DataTypeTok{county=}\StringTok{"Routt"}\NormalTok{, }\DataTypeTok{keep_geo_vars =}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{year=}\DecValTok{2018}\NormalTok{, }\DataTypeTok{survey=}\StringTok{"acs5"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Getting data from the 2014-2018 5-year ACS
+\end{verbatim}
+
+\begin{verbatim}
+## Loading ACS5 variables for 2018 from table B19013 and caching the dataset for faster future access.
+\end{verbatim}
+
+Overall 11\% of households have annual incomes below \$20,000 while 9\%
+have incomes \$200,000 and above. (The figures are similar for both
+single-person and family households.)
+
+That disparity has a racial components. About 19\% Black and Latino
+households earned less than \$20,000 while 6\% of Latino households and
+virtually no Black households had incomes in the top bracket. {[}ACS
+estimate is 0, but there is a margin of error{]}
+
+Generate other stats
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# function to take in table name and generate relevant acs stats}
+
+\NormalTok{raceSummary <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{ (table) \{}
+\NormalTok{  race_codes =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{""}\NormalTok{, }\StringTok{"A"}\NormalTok{,}\StringTok{"B"}\NormalTok{,}\StringTok{"C"}\NormalTok{,}\StringTok{"D"}\NormalTok{,}\StringTok{"E"}\NormalTok{,}\StringTok{"F"}\NormalTok{,}\StringTok{"G"}\NormalTok{,}\StringTok{"H"}\NormalTok{,}\StringTok{"I"}\NormalTok{)}
+\NormalTok{  race_values =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"All"}\NormalTok{, }\StringTok{"White"}\NormalTok{, }\StringTok{"Black"}\NormalTok{, }\StringTok{"Native American"}\NormalTok{, }\StringTok{"Asian"}\NormalTok{, }\StringTok{"Pacific Islander"}\NormalTok{, }\StringTok{"Other"}\NormalTok{, }\StringTok{"Two or more"}\NormalTok{, }\StringTok{"White non-hispanic"}\NormalTok{, }\StringTok{"Hispanic"}\NormalTok{)}
+\NormalTok{  race <-}\StringTok{ }\KeywordTok{tibble}\NormalTok{(}\DataTypeTok{race_code=}\NormalTok{race_codes, }\DataTypeTok{race=}\NormalTok{race_values)}
+
+  
+\NormalTok{  stats <-}\StringTok{ }\KeywordTok{get_acs}\NormalTok{(}\DataTypeTok{geography =} \StringTok{"county"}\NormalTok{, }\DataTypeTok{table=}\NormalTok{table, }\DataTypeTok{cache_table =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{state=}\StringTok{"CO"}\NormalTok{, }\DataTypeTok{county=}\StringTok{"Routt"}\NormalTok{, }\DataTypeTok{keep_geo_vars =}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{year=}\DecValTok{2018}\NormalTok{, }\DataTypeTok{survey=}\StringTok{"acs5"}\NormalTok{) }
+  \ControlFlowTok{for}\NormalTok{ (code }\ControlFlowTok{in}\NormalTok{ race_codes[}\OperatorTok{-}\DecValTok{1}\NormalTok{]) \{}
+\NormalTok{    stats <-}\StringTok{ }\KeywordTok{get_acs}\NormalTok{(}\DataTypeTok{geography =} \StringTok{"county"}\NormalTok{, }\DataTypeTok{table=}\KeywordTok{paste}\NormalTok{(table,code,}\DataTypeTok{sep=}\StringTok{''}\NormalTok{), }\DataTypeTok{cache_table =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{state=}\StringTok{"CO"}\NormalTok{, }\DataTypeTok{county=}\StringTok{"Routt"}\NormalTok{, }\DataTypeTok{keep_geo_vars =}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{year=}\DecValTok{2018}\NormalTok{, }\DataTypeTok{survey=}\StringTok{"acs5"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{union}\NormalTok{(stats)}
+    
+\NormalTok{  \}}
+  
+\NormalTok{  stats <-}\StringTok{ }\NormalTok{stats }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{var =} \KeywordTok{str_sub}\NormalTok{(variable,}\OperatorTok{-}\DecValTok{3}\NormalTok{,}\OperatorTok{-}\DecValTok{1}\NormalTok{)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{          }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{table =} \KeywordTok{str_sub}\NormalTok{(variable, }\DecValTok{1}\NormalTok{, }\DecValTok{-5}\NormalTok{))  }\OperatorTok{%>%}
+\StringTok{          }\KeywordTok{select}\NormalTok{(}\DataTypeTok{name=}\NormalTok{NAME, var, estimate, table) }\OperatorTok{%>%}
+\StringTok{          }\KeywordTok{spread}\NormalTok{(var, estimate, }\DataTypeTok{sep=}\StringTok{"_"}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{          }\KeywordTok{mutate_if}\NormalTok{(is.numeric, }\KeywordTok{c}\NormalTok{(}\DataTypeTok{pct =} \ControlFlowTok{function}\NormalTok{(x) x}\OperatorTok{/}\NormalTok{.}\OperatorTok{$}\NormalTok{var_}\DecValTok{001}\NormalTok{)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{          }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{race_code=}\KeywordTok{str_sub}\NormalTok{(table,}\DecValTok{7}\NormalTok{,}\DecValTok{8}\NormalTok{)) }\OperatorTok{%>%}
+\StringTok{          }\KeywordTok{inner_join}\NormalTok{(race) }
+  
+\NormalTok{  stats}
+  
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Summary of homeownership
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{rentals <-}\StringTok{ }\KeywordTok{raceSummary}\NormalTok{(}\StringTok{"B25003"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Getting data from the 2014-2018 5-year ACS
+\end{verbatim}
+
+\begin{verbatim}
+## Loading ACS5 variables for 2018 from table B25003 and caching the dataset for faster future access.
+\end{verbatim}
+
+\begin{verbatim}
+## Getting data from the 2014-2018 5-year ACS
+\end{verbatim}
+
+\begin{verbatim}
+## Loading ACS5 variables for 2018 from table B25003A and caching the dataset for faster future access.
+\end{verbatim}
+
+\begin{verbatim}
+## Getting data from the 2014-2018 5-year ACS
+\end{verbatim}
+
+\begin{verbatim}
+## Loading ACS5 variables for 2018 from table B25003B and caching the dataset for faster future access.
+\end{verbatim}
+
+\begin{verbatim}
+## Getting data from the 2014-2018 5-year ACS
+\end{verbatim}
+
+\begin{verbatim}
+## Loading ACS5 variables for 2018 from table B25003C and caching the dataset for faster future access.
+\end{verbatim}
+
+\begin{verbatim}
+## Getting data from the 2014-2018 5-year ACS
+\end{verbatim}
+
+\begin{verbatim}
+## Loading ACS5 variables for 2018 from table B25003D and caching the dataset for faster future access.
+\end{verbatim}
+
+\begin{verbatim}
+## Getting data from the 2014-2018 5-year ACS
+\end{verbatim}
+
+\begin{verbatim}
+## Loading ACS5 variables for 2018 from table B25003E and caching the dataset for faster future access.
+\end{verbatim}
+
+\begin{verbatim}
+## Getting data from the 2014-2018 5-year ACS
+\end{verbatim}
+
+\begin{verbatim}
+## Loading ACS5 variables for 2018 from table B25003F and caching the dataset for faster future access.
+\end{verbatim}
+
+\begin{verbatim}
+## Getting data from the 2014-2018 5-year ACS
+\end{verbatim}
+
+\begin{verbatim}
+## Loading ACS5 variables for 2018 from table B25003G and caching the dataset for faster future access.
+\end{verbatim}
+
+\begin{verbatim}
+## Getting data from the 2014-2018 5-year ACS
+\end{verbatim}
+
+\begin{verbatim}
+## Loading ACS5 variables for 2018 from table B25003H and caching the dataset for faster future access.
+\end{verbatim}
+
+\begin{verbatim}
+## Getting data from the 2014-2018 5-year ACS
+\end{verbatim}
+
+\begin{verbatim}
+## Loading ACS5 variables for 2018 from table B25003I and caching the dataset for faster future access.
+\end{verbatim}
+
+\begin{verbatim}
+## Joining, by = "race_code"
+\end{verbatim}
+
+Overall 72\% non-Hispanic whites in Routt County own their home (as do
+90\% of Asian-Americans), yet 63\% of Hispanics and more than 90\% of
+Blacks are renters.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pct <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x) \{x}\OperatorTok{/}\NormalTok{var_}\DecValTok{001}\NormalTok{\}}
+
+\NormalTok{computers_and_internet <-}\StringTok{ }\KeywordTok{get_acs}\NormalTok{(}\DataTypeTok{geography =} \StringTok{"county"}\NormalTok{, }\DataTypeTok{table=}\StringTok{"B28008"}\NormalTok{, }\DataTypeTok{cache_table =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{state=}\StringTok{"CO"}\NormalTok{, }\DataTypeTok{county=}\StringTok{"Routt"}\NormalTok{, }\DataTypeTok{keep_geo_vars =}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{year=}\DecValTok{2018}\NormalTok{, }\DataTypeTok{survey=}\StringTok{"acs5"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Getting data from the 2014-2018 5-year ACS
+\end{verbatim}
+
+\begin{verbatim}
+## Loading ACS5 variables for 2018 from table B28008 and caching the dataset for faster future access.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{computers_and_internet <-}\StringTok{ }\KeywordTok{get_acs}\NormalTok{(}\DataTypeTok{geography =} \StringTok{"place"}\NormalTok{, }\DataTypeTok{table=}\StringTok{"B28008"}\NormalTok{, }\DataTypeTok{cache_table =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{state=}\StringTok{"CO"}\NormalTok{, }\DataTypeTok{keep_geo_vars =}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{year=}\DecValTok{2018}\NormalTok{, }\DataTypeTok{survey=}\StringTok{"acs5"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{          }\KeywordTok{filter}\NormalTok{(NAME}\OperatorTok{==}\StringTok{"Steamboat Springs city, Colorado"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{          }\KeywordTok{union}\NormalTok{(computers_and_internet) }\OperatorTok{%>%}
+\StringTok{          }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{var =} \KeywordTok{str_sub}\NormalTok{(variable,}\OperatorTok{-}\DecValTok{3}\NormalTok{,}\OperatorTok{-}\DecValTok{1}\NormalTok{)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{          }\KeywordTok{select}\NormalTok{(}\DataTypeTok{geoid=}\NormalTok{GEOID, }\DataTypeTok{name=}\NormalTok{NAME, var, estimate) }\OperatorTok{%>%}
+\StringTok{          }\KeywordTok{spread}\NormalTok{(var, estimate, }\DataTypeTok{sep=}\StringTok{"_"}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{          }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{no_broadband =}\NormalTok{ var_}\DecValTok{003} \OperatorTok{+}\StringTok{ }\NormalTok{var_}\DecValTok{008} \OperatorTok{+}\StringTok{ }\NormalTok{var_}\DecValTok{009} \OperatorTok{+}\StringTok{ }\NormalTok{var_}\DecValTok{010}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{          }\KeywordTok{mutate_if}\NormalTok{(is.numeric, }\KeywordTok{c}\NormalTok{(}\DataTypeTok{pct =} \ControlFlowTok{function}\NormalTok{ (x) x}\OperatorTok{/}\NormalTok{.}\OperatorTok{$}\NormalTok{var_}\DecValTok{001}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Getting data from the 2014-2018 5-year ACS
+## Loading ACS5 variables for 2018 from table B28008 and caching the dataset for faster future access.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{computers_and_internet }\OperatorTok{%>%}\StringTok{ }\KeywordTok{write_csv}\NormalTok{(}\StringTok{"./computers_and_internet.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+In addition, 12\% of people in Steamboat proper lack a wired broadband
+connection. In the rest of the county the total is 20\%, with 9\% of
+people lacking even a high-speed phone connection.
+
+===
+
+Add a new chunk by clicking the \emph{Insert Chunk} button on the
+toolbar or by pressing \emph{Cmd+Option+I}.
+
+When you save the notebook, an HTML file containing the code and output
+will be saved alongside it (click the \emph{Preview} button or press
+\emph{Cmd+Shift+K} to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the
+editor. Consequently, unlike \emph{Knit}, \emph{Preview} does not run
+any R code chunks. Instead, the output of the chunk when it was last run
+in the editor is displayed.
+
+\end{document}

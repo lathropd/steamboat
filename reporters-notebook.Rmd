@@ -1,0 +1,334 @@
+---
+title: "Indivisible research"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+---
+
+Analysis and paragraphs for *Indivisble* at the Steamboat Pilot.
+
+##### setup
+```{r}
+# install.packages(c("tidyverse", " tidycensus", " tigris", "sf", "censusapi", "gmodels"))
+library("tidyverse")
+library("tidycensus")
+library("tigris")
+library("sf")
+library("censusapi")
+library("gmodels")
+
+census_api_key('11f5493d2c1abfda99d1cda59e4d9c68a232adde', overwrite=TRUE, install=TRUE)
+```
+
+
+# 2020-07-21
+
+Basic stats
+
+```{r}
+vars_acs <- load_variables(2018, "acs5", cache = TRUE)
+vars_acs
+```
+
+Routt County has about 25,000 residents[ACS 2018], and they are far from homogenous.
+
+```{r}
+# from the data I already generated or other research
+
+population <- 24874
+white_population_alone <- 23601
+white_non_hispanic_pop <- 22270
+latino_pop <- 1740
+white_latino_pop <- 1331
+black_pop <- 254
+born_in_colorado <- 8841
+children <- 4532
+children_under_poverty_line <- 427
+children_under_twice_the_poverty_line <- 427 + 545
+
+
+```
+
+Routt County has about 25,000 full-time residents according to the U.S. Census.
+- 90 percent are white, non-Latino [ACS 2018]
+- 7 percent are Latino
+- the rest are a mix of Black, Asian, Native American and those who describe thenselves as multiracial or member of some other race. [ACS 2018]
+- the median age is 39.8
+  - but for Latinos  (30) and Native Americans (31) it is substatially lower
+- 30 percent are members of two dozens churches and other relgious congregation [ARDA 2010]
+  - half of those are Roman Catholic
+  - the rest are mostly a mix of mainline and evangelical Christians
+- About 20 percent are considered poor
+  - 11 percent are direly impoverished, living under the federal poverty line
+- about 35 percent are from Colorado
+- 51 percent live in Steamboat Springs
+  - they are only somewhatt more likely to be from outside Colorado, to be poor, more likely to be an immigrant and to be poor than those living outsid
+
+### black in Routt County/Steamboat
+```{r}
+
+
+
+```
+
+Few members of Steamboat Springs's small Black community grew up locally with only about 5% are native Coloradoans. The others choose to move to a community in which they make up less than 2% of the population.
+
+About 75% (77.8%) of Blacks in Routt County live in Steamboat, but not all.
+
+For example, in the town of Oak Creek about 3% (2.6%) of the town's 800 (832) residents are Black.
+
+### economocs
+
+The median income in Steamboat Springs is $33,000. That's statistically similar to the county as a whole ($36,0000) and the rest of Northwest Colorador ($35,000). 
+
+In Steamboat and Routt County those from other parts of the U.S. had earnings more than 25% higher than natives.  
+
+Import data to analyze local vs out of town home owners
+```{r}
+# Routt County zipcodes via Zillow https://www.zillow.com/browse/homes/co/routt-county/
+routt_zips <-c(    "80428",
+    "80467",
+    "80469",
+    "81639",
+    "81638",
+    "80477",
+    "80479",
+    "80483",
+    "80488",
+    "81653",
+    "80487")
+
+# the residential property uses with potential owner-occupants (i.e. not apartments)
+residential_property_uses <- c(
+  "Live/Work Unit",
+  "Res. SF w/Caretaker",
+  "Residential Condominium",
+  # "Residential Duplex", # take out the multifamily
+  # "Residential Duplex Triplex", # take out the multifamil
+  "Residential SF w/AG",
+  "Residential Single Family",
+  "Residential Townhome"
+)
+
+routt_parcels <- read_csv("~/Desktop/projects/steamboat/data/ASSESSOR_Parcels.csv")
+
+```
+
+Code values for owner in or out of Routt County
+
+```{r}
+
+routt_parcels <- routt_parcels %>% mutate(local_owner = substr(ownZip,1,5) %in% routt_zips,
+                                          residential = propUse %in% residential_property_uses)
+  
+attach(routt_parcels)
+ownership_table <- table(local_owner, residential)
+detach(routt_parcels)
+summary(ownership_table)
+
+```
+
+### Compare values
+
+```{r}
+residences_only <- routt_parcels %>% filter(residential == TRUE)
+residences_only %>%  summarise(n=n())
+
+residences_only %>% group_by( propUse, local_owner) %>% summarise(meanVal= mean(totalImpsValue + totalLandValue) ) %>% unnest() %>% spread(local_owner, meanVal) %>% 
+ mutate(pct_dif = (`FALSE`/ `TRUE` -1))
+
+
+residences_only %>% group_by( propUse, local_owner) %>% summarise(n=n() ) %>% unnest() %>% spread(local_owner, n) %>% 
+ mutate(pct_dif = (`FALSE`/ `TRUE` -1))
+
+residences_only %>% group_by( propUse, local_owner) %>% summarise(median= median(totalImpsValue + totalLandValue) ) %>% unnest() %>% spread(local_owner, median) %>% 
+ mutate(pct_dif = (`FALSE`/ `TRUE` -1))
+
+residences_only %>% group_by( local_owner) %>% summarise(n = n() ) %>% unnest() %>% spread(local_owner, n) %>% mutate(total = `TRUE` + `FALSE`, pct_false = `FALSE`/total)
+
+residences_only %>% group_by(propUse, local_owner) %>% summarise(n = n() ) %>% unnest() %>% spread(local_owner, n) %>% mutate(total = `TRUE` + `FALSE`, pct_false = `FALSE`/total)
+
+
+```
+
+```{r}
+residences_only$ownZip %>% substr(1,5) %in% routt_zips %>% head()
+residences_only %>% select(ownZip, local_owner) %>% head(10)
+```
+
+
+
+### 2020-07-22 Describe economics
+
+Routt County's biggest economic divide is between full-time residents and second home owners. Those part-timers own more than 40 percent of the 14,000 single family residences. They also own nearly 70 percent of the condominiums, normally the most affordable way for people to afford to buy a home. [counts houses, townhomes and condos]
+
+That demand dramatically drives up prices with non-locals paying from 20 to 50 percent more, depending on the type of housing, according to an analysis of data from from the Routt County Property Appraiser.
+
+GET A QUOTE HERE
+
+Still, among the full-time residents there are certainly haves and have nots.
+
+
+```{r}
+
+income <- get_acs(geography = "county", table="B19001", cache_table = TRUE, state="CO", county="Routt", keep_geo_vars =TRUE, year=2018, survey="acs5") 
+
+income <- get_acs(geography = "county", table="B19001A", cache_table = TRUE, state="CO", county="Routt", keep_geo_vars =TRUE, year=2018, survey="acs5")  %>%  rows_insert(income, by="variable") 
+
+income <- get_acs(geography = "county", table="B19001B", cache_table = TRUE, state="CO", county="Routt", keep_geo_vars =TRUE, year=2018, survey="acs5")  %>%  rows_insert(income, by="variable") 
+
+income <- get_acs(geography = "county", table="B19001C", cache_table = TRUE, state="CO", county="Routt", keep_geo_vars =TRUE, year=2018, survey="acs5")  %>%  rows_insert(income, by="variable") 
+
+income <- get_acs(geography = "county", table="B19001D", cache_table = TRUE, state="CO", county="Routt", keep_geo_vars =TRUE, year=2018, survey="acs5")  %>%  rows_insert(income, by="variable") 
+
+income <- get_acs(geography = "county", table="B19001E", cache_table = TRUE, state="CO", county="Routt", keep_geo_vars =TRUE, year=2018, survey="acs5")  %>%  rows_insert(income, by="variable") 
+
+income <- get_acs(geography = "county", table="B19001F", cache_table = TRUE, state="CO", county="Routt", keep_geo_vars =TRUE, year=2018, survey="acs5")  %>%  rows_insert(income, by="variable") 
+
+income <- get_acs(geography = "county", table="B19001G", cache_table = TRUE, state="CO", county="Routt", keep_geo_vars =TRUE, year=2018, survey="acs5")  %>%  rows_insert(income, by="variable") 
+
+income <- get_acs(geography = "county", table="B19001H", cache_table = TRUE, state="CO", county="Routt", keep_geo_vars =TRUE, year=2018, survey="acs5")  %>%  rows_insert(income, by="variable") 
+
+income <- get_acs(geography = "county", table="B19001I", cache_table = TRUE, state="CO", county="Routt", keep_geo_vars =TRUE, year=2018, survey="acs5")  %>%  rows_insert(income, by="variable") 
+
+
+```
+
+create the additional vairables needed for reshaping
+
+```{r}
+
+income2 <- income %>% mutate(short_var = str_sub(variable,-3,-1)) %>% 
+          mutate(table = str_sub(variable, 1, -5))  %>%
+          select(name=NAME, short_var, estimate, table) %>%
+          spread(short_var, estimate, sep="_") %>%
+          mutate(lt_20k = short_var_002 + short_var_003 + short_var_004) %>%
+          mutate(gt_150k = short_var_016 + short_var_017) 
+
+
+pct <- function(x) {x/income2$short_var_001}
+income3  <- income2 %>% mutate_if(is.numeric, c(pct = pct)) %>% mutate(race_code=str_sub(table,7,8))
+rm(pct)
+
+
+
+```
+
+Build labels by race
+
+```{r}
+
+race_codes = c("", "A","B","C","D","E","F","G","H","I")
+race_values = c("All", "White", "Black", "Native American", "Asian", "Pacific Islander", "Other", "Two or more", "White non-hispanic", "Hispanic")
+
+race <- tibble(race_code=race_codes, race=race_values)
+
+income4 <- income3 %>% inner_join(race) 
+
+median_income <- get_acs(geography = "county", table="B19013", cache_table = TRUE, state="CO", county="Routt", keep_geo_vars =TRUE, year=2018, survey="acs5")
+
+```
+
+Overall 11% of households have annual incomes below $20,000 while 9% have incomes $200,000 and above. (The figures are similar for both single-person and family households.) 
+
+That disparity has a racial components. About 19% Black and Latino households earned less than $20,000 while 6% of Latino households and virtually no Black households had incomes in the top bracket. [ACS estimate is 0, but there is a margin of error]
+
+
+Generate other stats
+```{r}
+# function to take in table name and generate relevant acs stats
+
+raceSummary <- function (table) {
+  race_codes = c("", "A","B","C","D","E","F","G","H","I")
+  race_values = c("All", "White", "Black", "Native American", "Asian", "Pacific Islander", "Other", "Two or more", "White non-hispanic", "Hispanic")
+  race <- tibble(race_code=race_codes, race=race_values)
+
+  
+  stats <- get_acs(geography = "county", table=table, cache_table = TRUE, state="CO", county="Routt", keep_geo_vars =TRUE, year=2018, survey="acs5") 
+  for (code in race_codes[-1]) {
+    stats <- get_acs(geography = "county", table=paste(table,code,sep=''), cache_table = TRUE, state="CO", county="Routt", keep_geo_vars =TRUE, year=2018, survey="acs5") %>% union(stats)
+    
+  }
+  
+  stats <- stats %>% mutate(var = str_sub(variable,-3,-1)) %>% 
+          mutate(table = str_sub(variable, 1, -5))  %>%
+          select(name=NAME, var, estimate, table) %>%
+          spread(var, estimate, sep="_") %>%
+          mutate_if(is.numeric, c(pct = function(x) x/.$var_001)) %>% 
+          mutate(race_code=str_sub(table,7,8)) %>%
+          inner_join(race) 
+  
+  stats
+  
+}
+
+
+```
+
+
+Summary of homeownership
+
+```{r}
+
+
+rentals <- raceSummary("B25003")
+
+
+```
+
+
+Overall 72% non-Hispanic whites in Routt County own their home (as do 90% of Asian-Americans), yet 63% of Hispanics and more than 90% of Blacks are renters.
+
+
+```{r}
+pct <- function(x) {x/var_001}
+
+computers_and_internet <- get_acs(geography = "county", table="B28008", cache_table = TRUE, state="CO", county="Routt", keep_geo_vars =TRUE, year=2018, survey="acs5")
+
+computers_and_internet <- get_acs(geography = "place", table="B28008", cache_table = TRUE, state="CO", keep_geo_vars =TRUE, year=2018, survey="acs5") %>% 
+          filter(NAME=="Steamboat Springs city, Colorado") %>% 
+          union(computers_and_internet) %>%
+          mutate(var = str_sub(variable,-3,-1)) %>% 
+          select(geoid=GEOID, name=NAME, var, estimate) %>%
+          spread(var, estimate, sep="_") %>%
+          mutate(no_broadband = var_003 + var_008 + var_009 + var_010) %>%
+          mutate_if(is.numeric, c(pct = function (x) x/.$var_001))
+
+computers_and_internet %>% write_csv("./computers_and_internet.csv")
+
+
+
+
+```
+
+In addition,  12% of people in Steamboat proper lack a wired broadband connection. In the rest of the county the total is 20%, with 9% of people lacking even a high-speed phone connection.
+
+===
+
+# 2020-07-24
+
+Age, sex, race arrest data from NACJD
+
+```{r}
+# 2015
+load("~/Desktop/projects/steamboat/data/fbi-asr/ICPSR_36794/DS0001/36794-0001-Data.rda") 
+
+# 2016
+load("~/Desktop/projects/steamboat/data/fbi-asr/ICPSR_37056/DS0001/37056-0001-Data.rda")
+
+
+
+```
+
+
+
+===
+
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). 
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
